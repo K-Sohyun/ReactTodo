@@ -95,7 +95,7 @@ body {
 }
 
 .todo-list li .checkBtn::after {
-    content: "✔";
+    content: "\2714";
     position: absolute;
     top: 2px;
     left: 4px;
