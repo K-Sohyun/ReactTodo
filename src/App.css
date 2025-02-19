@@ -1,0 +1,197 @@
+body {
+    background: #ebebeb;
+}
+
+.container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    min-width: 240px;
+    height: 70vh;
+    background: #fff;
+    border-radius: 20px;
+    padding: 50px 40px;
+}
+
+.container h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.todo-form {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.todo-form input {
+    width: calc(100% - 50px);
+    height: 40px;
+    border: 0;
+    border-bottom: 3px solid #5c76e4;
+    padding: 0 20px;
+    font-size: 15px;
+}
+
+.todo-form input:focus,
+.todo-form input:active {
+    outline: none;
+    background: #f3f5ff;
+}
+
+.todo-form button {
+    width: 40px;
+    height: 40px;
+    font-size: 0;
+}
+
+.todo-list {
+    margin-top: 40px;
+    max-height: calc(70vh - 255px);
+    overflow-y: auto;
+    padding-top: 5px;
+}
+
+.todo-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.todo-list li:last-child {
+    margin-bottom: 0;
+}
+
+.todo-list li .left {
+    width: calc(100% - 100px);
+    position: relative;
+    padding-left: 40px;
+    word-break: break-all;
+}
+
+.todo-list li .right {
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.todo-list li .checkBtn {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    border: 1px solid #bbb;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.todo-list li .checkBtn::after {
+    content: "✔";
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    font-size: 16px;
+    color: #5c76e4;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.todo-list li.on .checkBtn {
+    border-color: #5c76e4;
+}
+
+.todo-list li.on .checkBtn::after {
+    opacity: 1;
+}
+
+.todo-list li.on .item-text {
+    text-decoration: line-through;
+}
+
+
+/* 공통 버튼 CSS */
+.btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: #5c76e4;
+    border-radius: 4px;
+    transition: 0.4s;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: #142777;
+}
+
+.btn::after,
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 2px;
+    background: #fff;
+}
+
+.btn--add::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.btn--delete::after {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.btn--delete::before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.btn--edit::after,
+.btn--edit::before {
+    content: none;
+}
+
+.btn--edit {
+    background: url('../public/assets/images/ico_edit.png') no-repeat center #5c76e4;
+    background-size: 24px;
+}
+
+
+/* 반응형 CSS */
+@media all and (max-width: 420px) {
+    .container {
+        padding: 40px 20px;
+    }
+
+    .container h1 {
+        font-size: 30px;
+    }
+
+    .todo-list li {
+        margin-bottom: 25px;
+    }
+
+    .todo-list li .left {
+        width: 100%;
+    }
+
+    .todo-list li .right {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .todo-list li .right button {
+        width: calc(50% - 3px);
+    }
+}
