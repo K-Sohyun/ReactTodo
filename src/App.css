@@ -169,7 +169,7 @@ body {
 
 
 /* 반응형 CSS */
-@media all and (max-width: 420px) {
+@media all and (max-width: 480px) {
     .container {
         padding: 40px 20px;
     }
@@ -189,6 +189,10 @@ body {
     .todo-list li .right {
         width: 100%;
         margin-top: 15px;
+    }
+
+    .todo-list li .checkBtn::after {
+        content: "\2713";
     }
 
     .todo-list li .right button {
