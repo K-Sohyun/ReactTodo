@@ -8,6 +8,7 @@ const TodoInsert = ({ onAdd, editTodo, onEdit }) => {
     useEffect(() => {
         if(editTodo) {
             setText(editTodo.text)
+            textRef.current.focus()
         }
     }, [editTodo])
 
