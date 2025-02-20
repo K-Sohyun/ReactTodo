@@ -10,7 +10,8 @@ body {
     width: 90%;
     max-width: 600px;
     min-width: 240px;
-    height: 70vh;
+    height: 900px;
+    max-height: calc(100vh - 150px);
     background: #fff;
     border-radius: 20px;
     padding: 50px 40px;
@@ -26,6 +27,7 @@ body {
     display: flex;
     align-items: center;
     column-gap: 10px;
+    margin-bottom: 35px;
 }
 
 .todo-form input {
@@ -50,8 +52,7 @@ body {
 }
 
 .todo-list {
-    margin-top: 40px;
-    max-height: calc(70vh - 255px);
+    max-height: calc(100% - 150px);
     overflow-y: auto;
     padding-top: 5px;
 }
@@ -179,7 +180,7 @@ body {
     }
 
     .todo-list li {
-        margin-bottom: 25px;
+        margin-bottom: 20px;
     }
 
     .todo-list li .left {
