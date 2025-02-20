@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import TodoInsert from "./TodoInsert";
 import TodoList from "./TodoList";
 
@@ -7,23 +7,38 @@ const TodoTemplate = () => {
     const [todos, setTodos] = useState([]);
     const [editTodo, setEditTodo] = useState(null);
 
+    useEffect(() => {
+        const storedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+        setTodos(storedTodos)
+        No.current = storedTodos.length ? storedTodos[storedTodos.length - 1].id + 1 : 1
+    }, [])
+
+    useEffect(() => {
+        if (todos.length) {
+            localStorage.setItem('todos', JSON.stringify(todos))
+        }
+    }, [todos])
+
+    const onAdd = (text) => {
+        const newTodo = {
+            id: No.current++,
+            text,
+            check: false
+        }
+        setTodos([...todos, newTodo])
+    }
+
     const onDel = (id)=>{
-        setTodos(todos.filter(todo => todo.id !== id))
+        const updatedTodos = todos.filter(todo => todo.id !== id);
+        setTodos(updatedTodos)
+        if (!updatedTodos.length) {
+            localStorage.removeItem('todos')
+            No.current = 1
+        }
     }
 
     const onToggle = (id) => {
         setTodos(todos.map(todo => todo.id === id ? {...todo, check : !todo.check} : todo))
-    }
-
-    const onAdd = (text) => {
-        setTodos([
-            ...todos,
-            {
-                id: No.current++,
-                text,
-                check: false
-            }
-        ])
     }
 
     const onEdit = (id, newText) => {
