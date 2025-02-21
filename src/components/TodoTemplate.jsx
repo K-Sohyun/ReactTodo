@@ -33,8 +33,6 @@ const TodoTemplate = () => {
         if (!updatedTodos.length) {
             localStorage.removeItem('todos')
         }
-
-        console.log(id)
     }
 
     const onToggle = (id) => {
