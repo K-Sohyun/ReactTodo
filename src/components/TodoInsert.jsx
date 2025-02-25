@@ -7,26 +7,28 @@ const TodoInsert = ({ onAdd, editTodo, onEdit }) => {
 
     useEffect(() => {
         if(editTodo) {
-            setText(editTodo.text)
-            textRef.current.focus()
+            setText(editTodo.text) // 기존 할 일 내용 입력창에 설정
+            textRef.current.focus() // useRef 사용해 입력창에 focus
         }
     }, [editTodo])
 
     const changeInput = (e) => {
-        const {value} = e.target
+        const {value} = e.target // input의 value 값 가져옴
         setText(value)
     }
 
     const onSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault() // 제출 동작 방지
 
         if(!text) return
+
         if(editTodo) {
-            onEdit(editTodo.id, text)
+            onEdit(editTodo.id, text) // 수정일 경우 할 일 업데이트
         } else {
             onAdd(text)
         }
-        setText('')
+
+        setText('') // 입력창 비우기
         textRef.current.focus()
     }
 
